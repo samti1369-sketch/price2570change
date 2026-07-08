@@ -41,7 +41,7 @@ body{
   box-shadow:0 16px 36px rgba(11,94,215,.20);
 }
 h1{margin:0;font-size:clamp(26px,3vw,42px);line-height:1.2}
-.subtitle{margin-top:8px;color:#17324d;font-size:16px}
+.subtitle{margin-top:8px;color:#eaf3ff;font-size:16px}
 .badge{
   white-space:nowrap;border:1px solid rgba(255,255,255,.55);color:#fff;
   padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-weight:700
@@ -139,17 +139,95 @@ th .sortmark{color:#ffffff;font-size:12px;margin-left:4px}
 <div class="footer">ที่มา: Google Sheet “อัตราการเปลี่ยนแปลงถ่วงน้ำหนัก”</div>
 </div>
 <script>
-const DATA = [{"id": 0, "province": "ทั้งประเทศ", "region": "รวม", "parcels": 39481288, "units": 520000, "change": 16.87, "nameEn": "ทั้งประเทศ"}, {"id": 1, "province": "กทม", "region": "กลาง", "parcels": 2285376, "units": 520000, "change": 30.87, "nameEn": "Bangkok Metropolis"}, {"id": 2, "province": "กระบี่", "region": "ใต้", "parcels": 273156, "units": 0, "change": 30.57, "nameEn": "Krabi"}, {"id": 3, "province": "กาญจนบุรี", "region": "ตะวันตก", "parcels": 356106, "units": 0, "change": 40.57, "nameEn": "Kanchanaburi"}, {"id": 4, "province": "กาฬสินธุ์", "region": "ตะวันออกเฉียงเหนือ", "parcels": 601543, "units": 0, "change": 50.57, "nameEn": "Kalasin"}, {"id": 5, "province": "กำแพงเพชร", "region": "กลาง", "parcels": 260192, "units": 0, "change": 60.57, "nameEn": "Kamphaeng Phet"}, {"id": 6, "province": "ขอนแก่น", "region": "ตะวันออกเฉียงเหนือ", "parcels": 1264087, "units": 0, "change": 70.57, "nameEn": "Khon Kaen"}, {"id": 7, "province": "จันทบุรี", "region": "ตะวันออก", "parcels": 279910, "units": 0, "change": 80.57, "nameEn": "Chanthaburi"}, {"id": 8, "province": "ฉะเชิงเทรา", "region": "ตะวันออก", "parcels": 409498, "units": 0, "change": 90.57, "nameEn": "Chachoengsao"}, {"id": 9, "province": "ชลบุรี", "region": "ตะวันออก", "parcels": 1006734, "units": 0, "change": 100.57, "nameEn": "Chon Buri"}, {"id": 10, "province": "ชัยนาท", "region": "กลาง", "parcels": 251079, "units": 0, "change": 110.57, "nameEn": "Chai Nat"}, {"id": 11, "province": "ชัยภูมิ", "region": "ตะวันออกเฉียงเหนือ", "parcels": 663528, "units": 0, "change": 120.57, "nameEn": "Chaiyaphum"}, {"id": 12, "province": "ชุมพร", "region": "ใต้", "parcels": 292689, "units": 0, "change": 130.57, "nameEn": "Chumphon"}, {"id": 13, "province": "เชียงราย", "region": "เหนือ", "parcels": 749555, "units": 0, "change": 140.57, "nameEn": "Chiang Rai"}, {"id": 14, "province": "เชียงใหม่", "region": "เหนือ", "parcels": 1094366, "units": 0, "change": 150.57, "nameEn": "Chiang Mai"}, {"id": 15, "province": "ตรัง", "region": "ใต้", "parcels": 435557, "units": 0, "change": 160.57, "nameEn": "Trang"}, {"id": 16, "province": "ตราด", "region": "ตะวันออก", "parcels": 107118, "units": 0, "change": 170.57, "nameEn": "Trat"}, {"id": 17, "province": "ตาก", "region": "กลาง", "parcels": 225638, "units": 0, "change": 180.57, "nameEn": "Tak"}, {"id": 18, "province": "นครนายก", "region": "ตะวันออก", "parcels": 225139, "units": 0, "change": 190.57, "nameEn": "Nakhon Nayok"}, {"id": 19, "province": "นครปฐม", "region": "กลาง", "parcels": 547734, "units": 0, "change": 200.57, "nameEn": "Nakhon Pathom"}, {"id": 20, "province": "นครพนม", "region": "ตะวันออกเฉียงเหนือ", "parcels": 533505, "units": 0, "change": 210.57, "nameEn": "Nakhon Phanom"}, {"id": 21, "province": "นครราชสีมา", "region": "ตะวันออกเฉียงเหนือ", "parcels": 1703824, "units": 0, "change": 220.57, "nameEn": "Nakhon Ratchasima"}, {"id": 22, "province": "นครศรีธรรมราช", "region": "ใต้", "parcels": 988234, "units": 0, "change": 230.57, "nameEn": "Nakhon Si Thammarat"}, {"id": 23, "province": "นครสวรรค์", "region": "กลาง", "parcels": 579971, "units": 0, "change": 240.57, "nameEn": "Nakhon Sawan"}, {"id": 24, "province": "นนทบุรี", "region": "กลาง", "parcels": 700727, "units": 0, "change": 250.57, "nameEn": "Nonthaburi"}, {"id": 25, "province": "นราธิวาส", "region": "ใต้", "parcels": 499828, "units": 0, "change": 260.57, "nameEn": "Narathiwat"}, {"id": 26, "province": "น่าน", "region": "เหนือ", "parcels": 311398, "units": 0, "change": 270.57, "nameEn": "Nan"}, {"id": 27, "province": "บึงกาฬ", "region": "ตะวันออกเฉียงเหนือ", "parcels": 140313, "units": 0, "change": 280.57, "nameEn": "Bueng Kan"}, {"id": 28, "province": "บุรีรัมย์", "region": "ตะวันออกเฉียงเหนือ", "parcels": 869197, "units": 0, "change": 290.57, "nameEn": "Buri Ram"}, {"id": 29, "province": "ปทุมธานี", "region": "กลาง", "parcels": 926568, "units": 0, "change": 300.57, "nameEn": "Pathum Thani"}, {"id": 30, "province": "ประจวบคีรีขันธ์", "region": "ตะวันตก", "parcels": 396482, "units": 0, "change": 310.57, "nameEn": "Prachuap Khiri Khan"}, {"id": 31, "province": "ปราจีนบุรี", "region": "ตะวันออก", "parcels": 338041, "units": 0, "change": 320.57, "nameEn": "Prachin Buri"}, {"id": 32, "province": "ปัตตานี", "region": "ใต้", "parcels": 545262, "units": 0, "change": 330.57, "nameEn": "Pattani"}, {"id": 33, "province": "พระนครศรีอยุธยา", "region": "กลาง", "parcels": 477323, "units": 0, "change": 340.57, "nameEn": "Phra Nakhon Si Ayutthaya"}, {"id": 34, "province": "พะเยา", "region": "เหนือ", "parcels": 391499, "units": 0, "change": 350.57, "nameEn": "Phayao"}, {"id": 35, "province": "พังงา", "region": "ใต้", "parcels": 158045, "units": 0, "change": 360.57, "nameEn": "Phangnga"}, {"id": 36, "province": "พัทลุง", "region": "ใต้", "parcels": 417137, "units": 0, "change": 370.57, "nameEn": "Phatthalung"}, {"id": 37, "province": "พิจิตร", "region": "กลาง", "parcels": 336211, "units": 0, "change": 380.57, "nameEn": "Phichit"}, {"id": 38, "province": "พิษณุโลก", "region": "กลาง", "parcels": 597869, "units": 0, "change": 390.57, "nameEn": "Phitsanulok"}, {"id": 39, "province": "เพชรบุรี", "region": "ตะวันตก", "parcels": 370793, "units": 0, "change": 400.57, "nameEn": "Phetchaburi"}, {"id": 40, "province": "เพชรบูรณ์", "region": "กลาง", "parcels": 520686, "units": 0, "change": 410.57, "nameEn": "Phetchabun"}, {"id": 41, "province": "แพร่", "region": "เหนือ", "parcels": 367085, "units": 0, "change": 420.57, "nameEn": "Phrae"}, {"id": 42, "province": "ภูเก็ต", "region": "ใต้", "parcels": 218273, "units": 0, "change": 430.57, "nameEn": "Phuket"}, {"id": 43, "province": "มหาสารคาม", "region": "ตะวันออกเฉียงเหนือ", "parcels": 751070, "units": 0, "change": 440.57, "nameEn": "Maha Sarakham"}, {"id": 44, "province": "มุกดาหาร", "region": "ตะวันออกเฉียงเหนือ", "parcels": 202743, "units": 0, "change": 450.57, "nameEn": "Mukdahan"}, {"id": 45, "province": "แม่ฮ่องสอน", "region": "เหนือ", "parcels": 45612, "units": 0, "change": 460.57, "nameEn": "Mae Hong Son"}, {"id": 46, "province": "ยโสธร", "region": "ตะวันออกเฉียงเหนือ", "parcels": 436329, "units": 0, "change": 470.57, "nameEn": "Yasothon"}, {"id": 47, "province": "ยะลา", "region": "ใต้", "parcels": 296728, "units": 0, "change": 480.57, "nameEn": "Yala"}, {"id": 48, "province": "ร้อยเอ็ด", "region": "ตะวันออกเฉียงเหนือ", "parcels": 988434, "units": 0, "change": 490.57, "nameEn": "Roi Et"}, {"id": 49, "province": "ระนอง", "region": "ใต้", "parcels": 53855, "units": 0, "change": 500.57, "nameEn": "Ranong"}, {"id": 50, "province": "ระยอง", "region": "ตะวันออก", "parcels": 563922, "units": 0, "change": 510.57, "nameEn": "Rayong"}, {"id": 51, "province": "ราชบุรี", "region": "ตะวันตก", "parcels": 457528, "units": 0, "change": 520.57, "nameEn": "Ratchaburi"}, {"id": 52, "province": "ลพบุรี", "region": "กลาง", "parcels": 374198, "units": 0, "change": 530.57, "nameEn": "Lop Buri"}, {"id": 53, "province": "ลำปาง", "region": "เหนือ", "parcels": 689535, "units": 0, "change": 540.57, "nameEn": "Lampang"}, {"id": 54, "province": "ลำพูน", "region": "เหนือ", "parcels": 356053, "units": 0, "change": 550.57, "nameEn": "Lamphun"}, {"id": 55, "province": "เลย", "region": "ตะวันออกเฉียงเหนือ", "parcels": 349391, "units": 0, "change": 560.57, "nameEn": "Loei"}, {"id": 56, "province": "ศรีสะเกษ", "region": "ตะวันออกเฉียงเหนือ", "parcels": 875470, "units": 0, "change": 570.57, "nameEn": "Si Sa Ket"}, {"id": 57, "province": "สกลนคร", "region": "ตะวันออกเฉียงเหนือ", "parcels": 736427, "units": 0, "change": 580.57, "nameEn": "Sakon Nakhon"}, {"id": 58, "province": "สงขลา", "region": "ใต้", "parcels": 1165759, "units": 0, "change": 590.57, "nameEn": "Songkhla"}, {"id": 59, "province": "สตูล", "region": "ใต้", "parcels": 195064, "units": 0, "change": 600.57, "nameEn": "Satun"}, {"id": 60, "province": "สมุทรปราการ", "region": "กลาง", "parcels": 640624, "units": 0, "change": 610.57, "nameEn": "Samut Prakan"}, {"id": 61, "province": "สมุทรสงคราม", "region": "กลาง", "parcels": 99893, "units": 0, "change": 620.57, "nameEn": "Samut Songkhram"}, {"id": 62, "province": "สมุทรสาคร", "region": "กลาง", "parcels": 293866, "units": 0, "change": 630.57, "nameEn": "Samut Sakhon"}, {"id": 63, "province": "สระแก้ว", "region": "ตะวันออก", "parcels": 144376, "units": 0, "change": 640.57, "nameEn": "Sa Kaeo"}, {"id": 64, "province": "สระบุรี", "region": "กลาง", "parcels": 377739, "units": 0, "change": 650.57, "nameEn": "Saraburi"}, {"id": 65, "province": "สิงห์บุรี", "region": "กลาง", "parcels": 126899, "units": 0, "change": 660.57, "nameEn": "Sing Buri"}, {"id": 66, "province": "สุโขทัย", "region": "กลาง", "parcels": 355016, "units": 0, "change": 670.57, "nameEn": "Sukhothai"}, {"id": 67, "province": "สุพรรณบุรี", "region": "กลาง", "parcels": 513997, "units": 0, "change": 680.57, "nameEn": "Suphan Buri"}, {"id": 68, "province": "สุราษฎร์ธานี", "region": "ใต้", "parcels": 626393, "units": 0, "change": 690.57, "nameEn": "Surat Thani"}, {"id": 69, "province": "สุรินทร์", "region": "ตะวันออกเฉียงเหนือ", "parcels": 819722, "units": 0, "change": 700.57, "nameEn": "Surin"}, {"id": 70, "province": "หนองคาย", "region": "ตะวันออกเฉียงเหนือ", "parcels": 284359, "units": 0, "change": 710.57, "nameEn": "Nong Khai"}, {"id": 71, "province": "หนองบัวลำภู", "region": "ตะวันออกเฉียงเหนือ", "parcels": 210042, "units": 0, "change": 720.57, "nameEn": "Nong Bua Lam Phu"}, {"id": 72, "province": "อ่างทอง", "region": "กลาง", "parcels": 173086, "units": 0, "change": 730.57, "nameEn": "Ang Thong"}, {"id": 73, "province": "อำนาจเจริญ", "region": "ตะวันออกเฉียงเหนือ", "parcels": 242001, "units": 0, "change": 740.57, "nameEn": "Amnat Charoen"}, {"id": 74, "province": "อุดรธานี", "region": "ตะวันออกเฉียงเหนือ", "parcels": 834733, "units": 0, "change": 750.57, "nameEn": "Udon Thani"}, {"id": 75, "province": "อุตรดิตถ์", "region": "เหนือ", "parcels": 348657, "units": 0, "change": 760.57, "nameEn": "Uttaradit"}, {"id": 76, "province": "อุทัยธานี", "region": "กลาง", "parcels": 156790, "units": 0, "change": 770.57, "nameEn": "Uthai Thani"}, {"id": 77, "province": "อุบลราชธานี", "region": "ตะวันออกเฉียงเหนือ", "parcels": 977701, "units": 0, "change": 780.57, "nameEn": "Ubon Ratchathani"}];
-const overall = DATA.find(d => d.id === 0);
-const provinces = DATA.filter(d => d.id !== 0);
-const fmt = n => Number(n||0).toLocaleString('th-TH');
-const pct = n => Number(n||0).toLocaleString('th-TH', {minimumFractionDigits:2, maximumFractionDigits:2}) + '%';
-const regions = [...new Set(provinces.map(d=>d.region))].sort((a,b)=>a.localeCompare(b,'th'));
-const byEn = new Map(provinces.map(d=>[d.nameEn.toLowerCase(), d]));
-const minChange = Math.min(...provinces.map(d=>d.change));
-const maxChange = Math.max(...provinces.map(d=>d.change));
+const SHEET_ID = '1tivEBich54Bs9RtNPfk270MMTRAxvBSqaZOBIJvJO18';
+const SHEET_GID = '0';
+const CSV_URLS = [
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${SHEET_GID}&cacheBust=${Date.now()}`,
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET_GID}&cacheBust=${Date.now()}`
+];
+const FALLBACK_DATA = [{"id": 0, "province": "ทั้งประเทศ", "region": "รวม", "parcels": 39481288, "units": 520000, "change": 16.87, "nameEn": "ทั้งประเทศ"}, {"id": 1, "province": "กทม", "region": "กลาง", "parcels": 2285376, "units": 520000, "change": 30.87, "nameEn": "Bangkok Metropolis"}, {"id": 2, "province": "กระบี่", "region": "ใต้", "parcels": 273156, "units": 0, "change": 30.57, "nameEn": "Krabi"}, {"id": 3, "province": "กาญจนบุรี", "region": "ตะวันตก", "parcels": 356106, "units": 0, "change": 40.57, "nameEn": "Kanchanaburi"}, {"id": 4, "province": "กาฬสินธุ์", "region": "ตะวันออกเฉียงเหนือ", "parcels": 601543, "units": 0, "change": 50.57, "nameEn": "Kalasin"}, {"id": 5, "province": "กำแพงเพชร", "region": "กลาง", "parcels": 260192, "units": 0, "change": 60.57, "nameEn": "Kamphaeng Phet"}, {"id": 6, "province": "ขอนแก่น", "region": "ตะวันออกเฉียงเหนือ", "parcels": 1264087, "units": 0, "change": 70.57, "nameEn": "Khon Kaen"}, {"id": 7, "province": "จันทบุรี", "region": "ตะวันออก", "parcels": 279910, "units": 0, "change": 80.57, "nameEn": "Chanthaburi"}, {"id": 8, "province": "ฉะเชิงเทรา", "region": "ตะวันออก", "parcels": 409498, "units": 0, "change": 90.57, "nameEn": "Chachoengsao"}, {"id": 9, "province": "ชลบุรี", "region": "ตะวันออก", "parcels": 1006734, "units": 0, "change": 100.57, "nameEn": "Chon Buri"}, {"id": 10, "province": "ชัยนาท", "region": "กลาง", "parcels": 251079, "units": 0, "change": 110.57, "nameEn": "Chai Nat"}, {"id": 11, "province": "ชัยภูมิ", "region": "ตะวันออกเฉียงเหนือ", "parcels": 663528, "units": 0, "change": 120.57, "nameEn": "Chaiyaphum"}, {"id": 12, "province": "ชุมพร", "region": "ใต้", "parcels": 292689, "units": 0, "change": 130.57, "nameEn": "Chumphon"}, {"id": 13, "province": "เชียงราย", "region": "เหนือ", "parcels": 749555, "units": 0, "change": 140.57, "nameEn": "Chiang Rai"}, {"id": 14, "province": "เชียงใหม่", "region": "เหนือ", "parcels": 1094366, "units": 0, "change": 150.57, "nameEn": "Chiang Mai"}, {"id": 15, "province": "ตรัง", "region": "ใต้", "parcels": 435557, "units": 0, "change": 160.57, "nameEn": "Trang"}, {"id": 16, "province": "ตราด", "region": "ตะวันออก", "parcels": 107118, "units": 0, "change": 170.57, "nameEn": "Trat"}, {"id": 17, "province": "ตาก", "region": "กลาง", "parcels": 225638, "units": 0, "change": 180.57, "nameEn": "Tak"}, {"id": 18, "province": "นครนายก", "region": "ตะวันออก", "parcels": 225139, "units": 0, "change": 190.57, "nameEn": "Nakhon Nayok"}, {"id": 19, "province": "นครปฐม", "region": "กลาง", "parcels": 547734, "units": 0, "change": 200.57, "nameEn": "Nakhon Pathom"}, {"id": 20, "province": "นครพนม", "region": "ตะวันออกเฉียงเหนือ", "parcels": 533505, "units": 0, "change": 210.57, "nameEn": "Nakhon Phanom"}, {"id": 21, "province": "นครราชสีมา", "region": "ตะวันออกเฉียงเหนือ", "parcels": 1703824, "units": 0, "change": 220.57, "nameEn": "Nakhon Ratchasima"}, {"id": 22, "province": "นครศรีธรรมราช", "region": "ใต้", "parcels": 988234, "units": 0, "change": 230.57, "nameEn": "Nakhon Si Thammarat"}, {"id": 23, "province": "นครสวรรค์", "region": "กลาง", "parcels": 579971, "units": 0, "change": 240.57, "nameEn": "Nakhon Sawan"}, {"id": 24, "province": "นนทบุรี", "region": "กลาง", "parcels": 700727, "units": 0, "change": 250.57, "nameEn": "Nonthaburi"}, {"id": 25, "province": "นราธิวาส", "region": "ใต้", "parcels": 499828, "units": 0, "change": 260.57, "nameEn": "Narathiwat"}, {"id": 26, "province": "น่าน", "region": "เหนือ", "parcels": 311398, "units": 0, "change": 270.57, "nameEn": "Nan"}, {"id": 27, "province": "บึงกาฬ", "region": "ตะวันออกเฉียงเหนือ", "parcels": 140313, "units": 0, "change": 280.57, "nameEn": "Bueng Kan"}, {"id": 28, "province": "บุรีรัมย์", "region": "ตะวันออกเฉียงเหนือ", "parcels": 869197, "units": 0, "change": 290.57, "nameEn": "Buri Ram"}, {"id": 29, "province": "ปทุมธานี", "region": "กลาง", "parcels": 926568, "units": 0, "change": 300.57, "nameEn": "Pathum Thani"}, {"id": 30, "province": "ประจวบคีรีขันธ์", "region": "ตะวันตก", "parcels": 396482, "units": 0, "change": 310.57, "nameEn": "Prachuap Khiri Khan"}, {"id": 31, "province": "ปราจีนบุรี", "region": "ตะวันออก", "parcels": 338041, "units": 0, "change": 320.57, "nameEn": "Prachin Buri"}, {"id": 32, "province": "ปัตตานี", "region": "ใต้", "parcels": 545262, "units": 0, "change": 330.57, "nameEn": "Pattani"}, {"id": 33, "province": "พระนครศรีอยุธยา", "region": "กลาง", "parcels": 477323, "units": 0, "change": 340.57, "nameEn": "Phra Nakhon Si Ayutthaya"}, {"id": 34, "province": "พะเยา", "region": "เหนือ", "parcels": 391499, "units": 0, "change": 350.57, "nameEn": "Phayao"}, {"id": 35, "province": "พังงา", "region": "ใต้", "parcels": 158045, "units": 0, "change": 360.57, "nameEn": "Phangnga"}, {"id": 36, "province": "พัทลุง", "region": "ใต้", "parcels": 417137, "units": 0, "change": 370.57, "nameEn": "Phatthalung"}, {"id": 37, "province": "พิจิตร", "region": "กลาง", "parcels": 336211, "units": 0, "change": 380.57, "nameEn": "Phichit"}, {"id": 38, "province": "พิษณุโลก", "region": "กลาง", "parcels": 597869, "units": 0, "change": 390.57, "nameEn": "Phitsanulok"}, {"id": 39, "province": "เพชรบุรี", "region": "ตะวันตก", "parcels": 370793, "units": 0, "change": 400.57, "nameEn": "Phetchaburi"}, {"id": 40, "province": "เพชรบูรณ์", "region": "กลาง", "parcels": 520686, "units": 0, "change": 410.57, "nameEn": "Phetchabun"}, {"id": 41, "province": "แพร่", "region": "เหนือ", "parcels": 367085, "units": 0, "change": 420.57, "nameEn": "Phrae"}, {"id": 42, "province": "ภูเก็ต", "region": "ใต้", "parcels": 218273, "units": 0, "change": 430.57, "nameEn": "Phuket"}, {"id": 43, "province": "มหาสารคาม", "region": "ตะวันออกเฉียงเหนือ", "parcels": 751070, "units": 0, "change": 440.57, "nameEn": "Maha Sarakham"}, {"id": 44, "province": "มุกดาหาร", "region": "ตะวันออกเฉียงเหนือ", "parcels": 202743, "units": 0, "change": 450.57, "nameEn": "Mukdahan"}, {"id": 45, "province": "แม่ฮ่องสอน", "region": "เหนือ", "parcels": 45612, "units": 0, "change": 460.57, "nameEn": "Mae Hong Son"}, {"id": 46, "province": "ยโสธร", "region": "ตะวันออกเฉียงเหนือ", "parcels": 436329, "units": 0, "change": 470.57, "nameEn": "Yasothon"}, {"id": 47, "province": "ยะลา", "region": "ใต้", "parcels": 296728, "units": 0, "change": 480.57, "nameEn": "Yala"}, {"id": 48, "province": "ร้อยเอ็ด", "region": "ตะวันออกเฉียงเหนือ", "parcels": 988434, "units": 0, "change": 490.57, "nameEn": "Roi Et"}, {"id": 49, "province": "ระนอง", "region": "ใต้", "parcels": 53855, "units": 0, "change": 500.57, "nameEn": "Ranong"}, {"id": 50, "province": "ระยอง", "region": "ตะวันออก", "parcels": 563922, "units": 0, "change": 510.57, "nameEn": "Rayong"}, {"id": 51, "province": "ราชบุรี", "region": "ตะวันตก", "parcels": 457528, "units": 0, "change": 520.57, "nameEn": "Ratchaburi"}, {"id": 52, "province": "ลพบุรี", "region": "กลาง", "parcels": 374198, "units": 0, "change": 530.57, "nameEn": "Lop Buri"}, {"id": 53, "province": "ลำปาง", "region": "เหนือ", "parcels": 689535, "units": 0, "change": 540.57, "nameEn": "Lampang"}, {"id": 54, "province": "ลำพูน", "region": "เหนือ", "parcels": 356053, "units": 0, "change": 550.57, "nameEn": "Lamphun"}, {"id": 55, "province": "เลย", "region": "ตะวันออกเฉียงเหนือ", "parcels": 349391, "units": 0, "change": 560.57, "nameEn": "Loei"}, {"id": 56, "province": "ศรีสะเกษ", "region": "ตะวันออกเฉียงเหนือ", "parcels": 875470, "units": 0, "change": 570.57, "nameEn": "Si Sa Ket"}, {"id": 57, "province": "สกลนคร", "region": "ตะวันออกเฉียงเหนือ", "parcels": 736427, "units": 0, "change": 580.57, "nameEn": "Sakon Nakhon"}, {"id": 58, "province": "สงขลา", "region": "ใต้", "parcels": 1165759, "units": 0, "change": 590.57, "nameEn": "Songkhla"}, {"id": 59, "province": "สตูล", "region": "ใต้", "parcels": 195064, "units": 0, "change": 600.57, "nameEn": "Satun"}, {"id": 60, "province": "สมุทรปราการ", "region": "กลาง", "parcels": 640624, "units": 0, "change": 610.57, "nameEn": "Samut Prakan"}, {"id": 61, "province": "สมุทรสงคราม", "region": "กลาง", "parcels": 99893, "units": 0, "change": 620.57, "nameEn": "Samut Songkhram"}, {"id": 62, "province": "สมุทรสาคร", "region": "กลาง", "parcels": 293866, "units": 0, "change": 630.57, "nameEn": "Samut Sakhon"}, {"id": 63, "province": "สระแก้ว", "region": "ตะวันออก", "parcels": 144376, "units": 0, "change": 640.57, "nameEn": "Sa Kaeo"}, {"id": 64, "province": "สระบุรี", "region": "กลาง", "parcels": 377739, "units": 0, "change": 650.57, "nameEn": "Saraburi"}, {"id": 65, "province": "สิงห์บุรี", "region": "กลาง", "parcels": 126899, "units": 0, "change": 660.57, "nameEn": "Sing Buri"}, {"id": 66, "province": "สุโขทัย", "region": "กลาง", "parcels": 355016, "units": 0, "change": 670.57, "nameEn": "Sukhothai"}, {"id": 67, "province": "สุพรรณบุรี", "region": "กลาง", "parcels": 513997, "units": 0, "change": 680.57, "nameEn": "Suphan Buri"}, {"id": 68, "province": "สุราษฎร์ธานี", "region": "ใต้", "parcels": 626393, "units": 0, "change": 690.57, "nameEn": "Surat Thani"}, {"id": 69, "province": "สุรินทร์", "region": "ตะวันออกเฉียงเหนือ", "parcels": 819722, "units": 0, "change": 700.57, "nameEn": "Surin"}, {"id": 70, "province": "หนองคาย", "region": "ตะวันออกเฉียงเหนือ", "parcels": 284359, "units": 0, "change": 710.57, "nameEn": "Nong Khai"}, {"id": 71, "province": "หนองบัวลำภู", "region": "ตะวันออกเฉียงเหนือ", "parcels": 210042, "units": 0, "change": 720.57, "nameEn": "Nong Bua Lam Phu"}, {"id": 72, "province": "อ่างทอง", "region": "กลาง", "parcels": 173086, "units": 0, "change": 730.57, "nameEn": "Ang Thong"}, {"id": 73, "province": "อำนาจเจริญ", "region": "ตะวันออกเฉียงเหนือ", "parcels": 242001, "units": 0, "change": 740.57, "nameEn": "Amnat Charoen"}, {"id": 74, "province": "อุดรธานี", "region": "ตะวันออกเฉียงเหนือ", "parcels": 834733, "units": 0, "change": 750.57, "nameEn": "Udon Thani"}, {"id": 75, "province": "อุตรดิตถ์", "region": "เหนือ", "parcels": 348657, "units": 0, "change": 760.57, "nameEn": "Uttaradit"}, {"id": 76, "province": "อุทัยธานี", "region": "กลาง", "parcels": 156790, "units": 0, "change": 770.57, "nameEn": "Uthai Thani"}, {"id": 77, "province": "อุบลราชธานี", "region": "ตะวันออกเฉียงเหนือ", "parcels": 977701, "units": 0, "change": 780.57, "nameEn": "Ubon Ratchathani"}];
+let DATA = [];
+let overall = null;
+let provinces = [];
+let regions = [];
+let byEn = new Map();
+let minChange = 0;
+let maxChange = 0;
 let geojson = null, mapChart = null, lineChart = null;
 let tableSort = {key:'id', dir:1};
+const TH_NAME_EN = {
+  'กทม':'Bangkok Metropolis','กรุงเทพมหานคร':'Bangkok Metropolis','กระบี่':'Krabi','กาญจนบุรี':'Kanchanaburi','กาฬสินธุ์':'Kalasin','กำแพงเพชร':'Kamphaeng Phet','ขอนแก่น':'Khon Kaen','จันทบุรี':'Chanthaburi','ฉะเชิงเทรา':'Chachoengsao','ชลบุรี':'Chon Buri','ชัยนาท':'Chai Nat','ชัยภูมิ':'Chaiyaphum','ชุมพร':'Chumphon','เชียงราย':'Chiang Rai','เชียงใหม่':'Chiang Mai','ตรัง':'Trang','ตราด':'Trat','ตาก':'Tak','นครนายก':'Nakhon Nayok','นครปฐม':'Nakhon Pathom','นครพนม':'Nakhon Phanom','นครราชสีมา':'Nakhon Ratchasima','นครศรีธรรมราช':'Nakhon Si Thammarat','นครสวรรค์':'Nakhon Sawan','นนทบุรี':'Nonthaburi','นราธิวาส':'Narathiwat','น่าน':'Nan','บึงกาฬ':'Bueng Kan','บุรีรัมย์':'Buri Ram','ปทุมธานี':'Pathum Thani','ประจวบคีรีขันธ์':'Prachuap Khiri Khan','ปราจีนบุรี':'Prachin Buri','ปัตตานี':'Pattani','พระนครศรีอยุธยา':'Phra Nakhon Si Ayutthaya','พะเยา':'Phayao','พังงา':'Phangnga','พัทลุง':'Phatthalung','พิจิตร':'Phichit','พิษณุโลก':'Phitsanulok','เพชรบุรี':'Phetchaburi','เพชรบูรณ์':'Phetchabun','แพร่':'Phrae','ภูเก็ต':'Phuket','มหาสารคาม':'Maha Sarakham','มุกดาหาร':'Mukdahan','แม่ฮ่องสอน':'Mae Hong Son','ยโสธร':'Yasothon','ยะลา':'Yala','ร้อยเอ็ด':'Roi Et','ระนอง':'Ranong','ระยอง':'Rayong','ราชบุรี':'Ratchaburi','ลพบุรี':'Lop Buri','ลำปาง':'Lampang','ลำพูน':'Lamphun','เลย':'Loei','ศรีสะเกษ':'Si Sa Ket','สกลนคร':'Sakon Nakhon','สงขลา':'Songkhla','สตูล':'Satun','สมุทรปราการ':'Samut Prakan','สมุทรสงคราม':'Samut Songkhram','สมุทรสาคร':'Samut Sakhon','สระแก้ว':'Sa Kaeo','สระบุรี':'Saraburi','สิงห์บุรี':'Sing Buri','สุโขทัย':'Sukhothai','สุพรรณบุรี':'Suphan Buri','สุราษฎร์ธานี':'Surat Thani','สุรินทร์':'Surin','หนองคาย':'Nong Khai','หนองบัวลำภู':'Nong Bua Lam Phu','อ่างทอง':'Ang Thong','อำนาจเจริญ':'Amnat Charoen','อุดรธานี':'Udon Thani','อุตรดิตถ์':'Uttaradit','อุทัยธานี':'Uthai Thani','อุบลราชธานี':'Ubon Ratchathani'
+};
+const fmt = n => Number(n||0).toLocaleString('th-TH');
+const pct = n => Number(n||0).toLocaleString('th-TH', {minimumFractionDigits:2, maximumFractionDigits:2}) + '%';
+function thaiToArabic(s){ const map={'๐':'0','๑':'1','๒':'2','๓':'3','๔':'4','๕':'5','๖':'6','๗':'7','๘':'8','๙':'9'}; return String(s??'').replace(/[๐-๙]/g, ch=>map[ch]); }
+function num(v){ const s=thaiToArabic(v).replace(/,/g,'').replace(/%/g,'').trim(); const n=parseFloat(s); return Number.isFinite(n)?n:0; }
+function normKey(s){ return String(s||'').toLowerCase().replace(/\s+/g,'').replace(/[()\-_/.:]/g,''); }
+function parseCSV(text){
+  const rows=[]; let row=[]; let cur=''; let q=false;
+  for(let i=0;i<text.length;i++){ const c=text[i], n=text[i+1];
+    if(q){ if(c==='"' && n==='"'){ cur+='"'; i++; } else if(c==='"') q=false; else cur+=c; }
+    else { if(c==='"') q=true; else if(c===','){ row.push(cur); cur=''; } else if(c==='\n'){ row.push(cur); rows.push(row); row=[]; cur=''; } else if(c!=='\r') cur+=c; }
+  }
+  row.push(cur); rows.push(row);
+  return rows.filter(r=>r.some(x=>String(x).trim()!==''));
+}
+function headerIndex(headers, tests){
+  const hs=headers.map(normKey);
+  for(const t of tests){ const nt=normKey(t); const idx=hs.findIndex(h=>h===nt || h.includes(nt) || nt.includes(h)); if(idx>=0) return idx; }
+  return -1;
+}
+function rowsToData(rows){
+  if(!rows || rows.length<2) throw new Error('ไม่พบข้อมูลในชีต');
+  const headers=rows[0];
+  const idx={
+    id: headerIndex(headers,['ลำดับ','no','id']),
+    province: headerIndex(headers,['จังหวัด','province','ชื่อจังหวัด']),
+    region: headerIndex(headers,['ภูมิภาค','region']),
+    parcels: headerIndex(headers,['จำนวนแปลง','แปลง','parcels']),
+    units: headerIndex(headers,['จำนวนหน่วยที่ดิน','หน่วยที่ดิน','units']),
+    change: headerIndex(headers,['อัตราการเปลี่ยนแปลงแบบถ่วงน้ำหนัก','อัตราการเปลี่ยนแปลง','ถ่วงน้ำหนัก','change','rate']),
+    nameEn: headerIndex(headers,['nameEn','name_en','provinceEn'])
+  };
+  if(idx.province<0 || idx.change<0) throw new Error('หัวตารางต้องมีอย่างน้อยคอลัมน์จังหวัดและอัตราการเปลี่ยนแปลง');
+  return rows.slice(1).map((r,i)=>{
+    const province = String(r[idx.province]||'').trim();
+    if(!province) return null;
+    const idVal = idx.id>=0 ? num(r[idx.id]) : i;
+    return {
+      id: idVal,
+      province,
+      region: idx.region>=0 ? String(r[idx.region]||'').trim() : '',
+      parcels: idx.parcels>=0 ? num(r[idx.parcels]) : 0,
+      units: idx.units>=0 ? num(r[idx.units]) : 0,
+      change: num(r[idx.change]),
+      nameEn: idx.nameEn>=0 && String(r[idx.nameEn]||'').trim() ? String(r[idx.nameEn]).trim() : (TH_NAME_EN[province] || province)
+    };
+  }).filter(Boolean);
+}
+async function loadSheetData(){
+  let lastErr = null;
+  for(const url of CSV_URLS){
+    try{
+      const res = await fetch(url, {cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const text = await res.text();
+      const data = rowsToData(parseCSV(text));
+      if(data.length) return {data, source:'Google Sheet'};
+    }catch(e){ lastErr=e; }
+  }
+  console.warn('ใช้ข้อมูลสำรอง เนื่องจากดึง Google Sheet ไม่สำเร็จ:', lastErr);
+  return {data:FALLBACK_DATA, source:'ข้อมูลสำรองในไฟล์'};
+}
+function setupData(raw){
+  DATA = raw.map(d=>({...d, id:Number(d.id), parcels:Number(d.parcels||0), units:Number(d.units||0), change:Number(d.change||0)}));
+  overall = DATA.find(d => Number(d.id) === 0 || d.province === 'ทั้งประเทศ') || DATA[0];
+  provinces = DATA.filter(d => !(Number(d.id) === 0 || d.province === 'ทั้งประเทศ'));
+  regions = [...new Set(provinces.map(d=>d.region).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'th'));
+  byEn = new Map(provinces.map(d=>[String(d.nameEn||'').toLowerCase(), d]));
+  minChange = Math.min(...provinces.map(d=>d.change));
+  maxChange = Math.max(...provinces.map(d=>d.change));
+}
 function getSelectedRegion(){
   return document.getElementById('mapRegion')?.value || document.getElementById('tableRegion')?.value || '';
 }
@@ -164,35 +242,63 @@ function syncRegionFilters(value){
   const tableRegion = document.getElementById('tableRegion');
   if (mapRegion && mapRegion.value !== value) mapRegion.value = value;
   if (tableRegion && tableRegion.value !== value) tableRegion.value = value;
-  markActive(mapRegion);
-  markActive(tableRegion);
+  markActive(mapRegion); markActive(tableRegion);
 }
-function refreshAll(){ renderTable(); renderLine(); renderMap(); }
-
-document.getElementById('summaryCards').innerHTML = `
-<div class="card"><div class="label">อัตราเปลี่ยนแปลงภาพรวม</div><div class="value">${pct(overall.change)}</div><div class="note">ใช้ข้อมูลจากลำดับ 0</div></div>
-<div class="card"><div class="label">จำนวนแปลงทั้งหมด</div><div class="value">${fmt(overall.parcels)}</div><div class="note">โฉนดที่ดิน และ น.ส.3 ก.</div></div>
-<div class="card"><div class="label">จำนวนหน่วยที่ดิน</div><div class="value">${fmt(overall.units)}</div><div class="note">ตามไฟล์ข้อมูล</div></div>
-<div class="card"><div class="label">จำนวนจังหวัด</div><div class="value">${fmt(provinces.length)}</div><div class="note">ไม่นับลำดับ 0</div></div>`;
-['mapRegion','tableRegion'].forEach(id=>{const el=document.getElementById(id); regions.forEach(r=>el.insertAdjacentHTML('beforeend',`<option value="${r}">${r}</option>`));});
-const provinceSelect=document.getElementById('globalProvince');
-[...provinces].sort((a,b)=>a.province.localeCompare(b.province,'th')).forEach(d=>provinceSelect.insertAdjacentHTML('beforeend',`<option value="${d.province}">${d.province}</option>`));
+function refreshAll(){ renderCards(); renderTable(); renderLine(); renderMap(); }
+function renderCards(){
+  const selectedProvince = document.getElementById('globalProvince')?.value || '';
+  const selectedRegion = getSelectedRegion();
+  let base = selectedProvince ? provinces.filter(d=>d.province===selectedProvince) : (selectedRegion ? provinces.filter(d=>d.region===selectedRegion) : provinces);
+  if(selectedProvince && base.length){
+    const d=base[0];
+    document.getElementById('summaryCards').innerHTML = `
+      <div class="card"><div class="label">จังหวัดที่เลือก</div><div class="value">${d.province}</div><div class="note">${d.region}</div></div>
+      <div class="card"><div class="label">อัตราเปลี่ยนแปลง</div><div class="value">${pct(d.change)}</div><div class="note">แบบถ่วงน้ำหนัก</div></div>
+      <div class="card"><div class="label">จำนวนแปลง</div><div class="value">${fmt(d.parcels)}</div><div class="note">ตามไฟล์ข้อมูล</div></div>
+      <div class="card"><div class="label">จำนวนหน่วยที่ดิน</div><div class="value">${fmt(d.units)}</div><div class="note">ตามไฟล์ข้อมูล</div></div>`;
+  } else {
+    const parcels = selectedRegion ? base.reduce((s,d)=>s+d.parcels,0) : overall.parcels;
+    const units = selectedRegion ? base.reduce((s,d)=>s+d.units,0) : overall.units;
+    const avg = selectedRegion && base.length ? base.reduce((s,d)=>s+d.change,0)/base.length : overall.change;
+    document.getElementById('summaryCards').innerHTML = `
+      <div class="card"><div class="label">อัตราเปลี่ยนแปลง${selectedRegion?'ภูมิภาค':'ภาพรวม'}</div><div class="value">${pct(avg)}</div><div class="note">${selectedRegion?'เฉลี่ยจังหวัดในภูมิภาค':'ใช้ข้อมูลจากลำดับ 0'}</div></div>
+      <div class="card"><div class="label">จำนวนแปลง${selectedRegion?'ในภูมิภาค':'ทั้งหมด'}</div><div class="value">${fmt(parcels)}</div><div class="note">ตามไฟล์ข้อมูล</div></div>
+      <div class="card"><div class="label">จำนวนหน่วยที่ดิน</div><div class="value">${fmt(units)}</div><div class="note">ตามไฟล์ข้อมูล</div></div>
+      <div class="card"><div class="label">จำนวนจังหวัด</div><div class="value">${fmt(base.length)}</div><div class="note">ไม่นับลำดับ 0</div></div>`;
+  }
+}
+function fillFilters(){
+  ['mapRegion','tableRegion'].forEach(id=>{const el=document.getElementById(id); el.innerHTML='<option value="">ทุกภูมิภาค</option>'; regions.forEach(r=>el.insertAdjacentHTML('beforeend',`<option value="${r}">${r}</option>`)); });
+  const provinceSelect=document.getElementById('globalProvince');
+  provinceSelect.innerHTML='<option value="">ทุกจังหวัด</option>';
+  [...provinces].sort((a,b)=>a.province.localeCompare(b.province,'th')).forEach(d=>provinceSelect.insertAdjacentHTML('beforeend',`<option value="${d.province}">${d.province}</option>`));
+}
 function markActive(el){ if(!el) return; if(el.value || (el.id==='search' && el.value.trim())) el.classList.add('active'); else el.classList.remove('active'); }
 function getFilteredForTable(){const q=document.getElementById('search').value.trim().toLowerCase(); let arr=provinces.filter(d=>passGlobalFilters(d)&&(!q||d.province.toLowerCase().includes(q)||d.region.toLowerCase().includes(q))); arr.sort((a,b)=>{let av=a[tableSort.key], bv=b[tableSort.key]; if(typeof av==='string') return av.localeCompare(bv,'th')*tableSort.dir; return (av-bv)*tableSort.dir;}); return arr;}
-function renderTable(){const rows=getFilteredForTable(); document.getElementById('tbody').innerHTML=rows.map(d=>`<tr><td class="num">${d.id}</td><td><b>${d.province}</b></td><td><span class="pill">${d.region}</span></td><td class="num">${fmt(d.parcels)}</td><td class="num">${fmt(d.units)}</td><td class="num"><b>${pct(d.change)}</b></td></tr>`).join(''); document.querySelectorAll('#headrow th').forEach(th=>{const active=th.dataset.key===tableSort.key; th.innerHTML=th.textContent.replace(/[▲▼]/g,'') + (active?` <span class="sortmark">${tableSort.dir===1?'▲':'▼'}</span>`:'');});}
+function renderTable(){const rows=getFilteredForTable(); document.getElementById('tbody').innerHTML=rows.map(d=>`<tr><td class="num">${d.id}</td><td><b>${d.province}</b></td><td><span class="pill">${d.region}</span></td><td class="num">${fmt(d.parcels)}</td><td class="num">${fmt(d.units)}</td><td class="num"><b>${pct(d.change)}</b></td></tr>`).join('') || `<tr><td colspan="6" style="text-align:center;color:#5f7188;padding:20px">ไม่พบข้อมูลตามตัวกรอง</td></tr>`; document.querySelectorAll('#headrow th').forEach(th=>{const active=th.dataset.key===tableSort.key; th.innerHTML=th.textContent.replace(/[▲▼]/g,'') + (active?` <span class="sortmark">${tableSort.dir===1?'▲':'▼'}</span>`:'');});}
 function chartData(order){let arr=provinces.filter(passGlobalFilters); if(order==='changeAsc') arr.sort((a,b)=>a.change-b.change); else arr.sort((a,b)=>a.province.localeCompare(b.province,'th')); return arr;}
 function renderLine(){const order=document.getElementById('chartOrder').value; const arr=chartData(order); markActive(document.getElementById('chartOrder')); lineChart = Highcharts.chart('lineChart', {chart:{type:'line',backgroundColor:'transparent',zoomType:'x'},title:{text:null},credits:{enabled:false},exporting:{enabled:true},xAxis:{categories:arr.map(d=>d.province),labels:{style:{color:'#17324d'},rotation:-60},title:{text: order==='changeAsc'?'เรียงจากน้อยไปมาก':'เรียงตามพยัญชนะ'}},yAxis:{title:{text:'อัตราการเปลี่ยนแปลง (%)'},labels:{style:{color:'#17324d'},format:'{value}%'}},tooltip:{useHTML:true,pointFormatter:function(){const d=arr[this.index]; return `<b>${d.province}</b><br>จำนวนแปลง: ${fmt(d.parcels)}<br>จำนวนหน่วยที่ดิน: ${fmt(d.units)}<br>อัตราการเปลี่ยนแปลง: <b>${pct(d.change)}</b>`;}},legend:{enabled:false},series:[{name:'อัตราการเปลี่ยนแปลง',data:arr.map(d=>d.change),marker:{radius:3},lineWidth:2}]});}
-function provinceFromFeature(f){const keys=[f.properties && f.properties.name, f.properties && f.properties['name:en'], f.properties && f.properties.NAME_1, f.properties && f.properties.province]; for(const k of keys){if(k && byEn.has(String(k).toLowerCase())) return byEn.get(String(k).toLowerCase());} return null;}
 function makeMapData(){return provinces.map(d=>({nameEn:d.nameEn, value:passGlobalFilters(d)?d.change:null, custom:d}));}
 function renderMap(){if(!geojson) return; markActive(document.getElementById('mapRegion')); mapChart = Highcharts.mapChart('map', {chart:{backgroundColor:'transparent'},title:{text:null},credits:{enabled:false},exporting:{enabled:true},mapNavigation:{enabled:true,buttonOptions:{verticalAlign:'bottom'}},colorAxis:{min:minChange,max:maxChange,stops:[[0,'#72e6a4'],[0.5,'#f7c948'],[1,'#ff6f61']],labels:{format:'{value}%'}},legend:{title:{text:'อัตราการเปลี่ยนแปลง (%)'},align:'left',verticalAlign:'bottom',floating:true,backgroundColor:'rgba(255,255,255,.92)',borderColor:'#c6dcf8',borderWidth:1},tooltip:{useHTML:true,formatter:function(){const d=this.point.custom; if(!d || this.point.value===null || this.point.value===undefined) return 'ไม่มีข้อมูล'; return `<div style="padding:6px 4px;color:#0b1f3a;font-weight:700;line-height:1.65"><b>${d.province}</b><br>ภูมิภาค: ${d.region}<br>จำนวนแปลง: ${fmt(d.parcels)}<br>จำนวนหน่วยที่ดิน: ${fmt(d.units)}<br>อัตราการเปลี่ยนแปลงแบบถ่วงน้ำหนัก: <b>${pct(d.change)}</b></div>`;}},series:[{mapData:geojson,data:makeMapData(),joinBy:['name','nameEn'],name:'อัตราการเปลี่ยนแปลง',borderColor:'rgba(255,255,255,.45)',borderWidth:.6,nullColor:'rgba(255,255,255,.08)',states:{hover:{borderColor:'#fff',borderWidth:1.5}},dataLabels:{enabled:false}}]});}
 async function loadMap(){try{geojson=await fetch('https://code.highcharts.com/mapdata/countries/th/th-all.geo.json').then(r=>r.json()); renderMap();}catch(e){document.getElementById('map').innerHTML='<div class="note">ไม่สามารถโหลดแผนที่จากอินเทอร์เน็ตได้ แต่ตารางและกราฟยังใช้งานได้</div>';}}
-document.getElementById('mapRegion').addEventListener('change', e=>{syncRegionFilters(e.target.value); refreshAll();});
-document.getElementById('chartOrder').addEventListener('change', e=>{markActive(e.target); renderLine();});
-document.getElementById('search').addEventListener('input', e=>{markActive(e.target); renderTable();});
-document.getElementById('tableRegion').addEventListener('change', e=>{syncRegionFilters(e.target.value); refreshAll();});
-document.getElementById('globalProvince').addEventListener('change', e=>{markActive(e.target); refreshAll();});
-document.querySelectorAll('#headrow th').forEach(th=>th.addEventListener('click',()=>{const key=th.dataset.key; if(tableSort.key===key) tableSort.dir*=-1; else tableSort={key,dir:1}; renderTable();}));
-renderTable(); renderLine(); loadMap();
+function attachEvents(){
+  document.getElementById('mapRegion').addEventListener('change', e=>{syncRegionFilters(e.target.value); refreshAll();});
+  document.getElementById('chartOrder').addEventListener('change', e=>{markActive(e.target); renderLine();});
+  document.getElementById('search').addEventListener('input', e=>{markActive(e.target); renderTable();});
+  document.getElementById('tableRegion').addEventListener('change', e=>{syncRegionFilters(e.target.value); refreshAll();});
+  document.getElementById('globalProvince').addEventListener('change', e=>{markActive(e.target); refreshAll();});
+  document.querySelectorAll('#headrow th').forEach(th=>th.addEventListener('click',()=>{const key=th.dataset.key; if(tableSort.key===key) tableSort.dir*=-1; else tableSort={key,dir:1}; renderTable();}));
+}
+async function init(){
+  const footer=document.querySelector('.footer');
+  if(footer) footer.textContent='กำลังโหลดข้อมูลจาก Google Sheet...';
+  const loaded = await loadSheetData();
+  setupData(loaded.data);
+  fillFilters();
+  renderCards(); renderTable(); renderLine(); attachEvents(); loadMap();
+  if(footer) footer.textContent = `ที่มา: ${loaded.source} “อัตราการเปลี่ยนแปลงถ่วงน้ำหนัก” | อัปเดตล่าสุด: ${new Date().toLocaleString('th-TH')}`;
+}
+init();
 </script>
 </body>
 </html>
