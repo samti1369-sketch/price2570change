@@ -123,6 +123,13 @@ th .sortmark{color:#ffffff;font-size:12px;margin-left:4px}
 <body>
 <div class="container">
 <section class="hero"><div><h1>อัตราการเปลี่ยนแปลงราคาประเมินที่ดิน<br>รอบบัญชี 2570-2573</h1><div class="subtitle">แสดงผลจาก Google Sheet โดยค่าภาพรวมทั้งประเทศใช้ข้อมูลจากลำดับ 0 โดยตรง</div></div><div class="badge">บัญชีราคาประเมินที่ดิน 2570-2573</div></section>
+<section class="panel filter-panel" style="margin-bottom:14px">
+  <h2>ตัวกรองจังหวัด</h2>
+  <div class="controls">
+    <select id="globalProvince"><option value="">ทุกจังหวัด</option></select>
+  </div>
+  <div class="note">เลือกจังหวัดเพื่อกรองข้อมูลบนแผนที่ กราฟเส้น และตารางข้อมูลทันที</div>
+</section>
 <section class="cards" id="summaryCards"></section>
 <section class="grid">
   <div class="panel"><h2>แผนที่อัตราการเปลี่ยนแปลงรายจังหวัด</h2><div class="controls"><select id="mapRegion"><option value="">ทุกภูมิภาค</option></select></div><div id="map"></div><div class="note">เลื่อนเคอร์เซอร์บนจังหวัดเพื่อดูชื่อจังหวัด จำนวนแปลง จำนวนหน่วยที่ดิน และอัตราการเปลี่ยนแปลงแบบถ่วงน้ำหนัก</div></div>
@@ -143,6 +150,11 @@ const minChange = Math.min(...provinces.map(d=>d.change));
 const maxChange = Math.max(...provinces.map(d=>d.change));
 let geojson = null, mapChart = null, lineChart = null;
 let tableSort = {key:'id', dir:1};
+function passGlobalFilters(d){
+  const p = document.getElementById('globalProvince')?.value || '';
+  return (!p || d.province === p);
+}
+function refreshAll(){ renderTable(); renderLine(); renderMap(); }
 
 document.getElementById('summaryCards').innerHTML = `
 <div class="card"><div class="label">อัตราเปลี่ยนแปลงภาพรวม</div><div class="value">${pct(overall.change)}</div><div class="note">ใช้ข้อมูลจากลำดับ 0</div></div>
@@ -150,18 +162,21 @@ document.getElementById('summaryCards').innerHTML = `
 <div class="card"><div class="label">จำนวนหน่วยที่ดิน</div><div class="value">${fmt(overall.units)}</div><div class="note">ตามไฟล์ข้อมูล</div></div>
 <div class="card"><div class="label">จำนวนจังหวัด</div><div class="value">${fmt(provinces.length)}</div><div class="note">ไม่นับลำดับ 0</div></div>`;
 ['mapRegion','tableRegion'].forEach(id=>{const el=document.getElementById(id); regions.forEach(r=>el.insertAdjacentHTML('beforeend',`<option value="${r}">${r}</option>`));});
+const provinceSelect=document.getElementById('globalProvince');
+[...provinces].sort((a,b)=>a.province.localeCompare(b.province,'th')).forEach(d=>provinceSelect.insertAdjacentHTML('beforeend',`<option value="${d.province}">${d.province}</option>`));
 function markActive(el){ if(!el) return; if(el.value || (el.id==='search' && el.value.trim())) el.classList.add('active'); else el.classList.remove('active'); }
-function getFilteredForTable(){const q=document.getElementById('search').value.trim().toLowerCase(); const reg=document.getElementById('tableRegion').value; let arr=provinces.filter(d=>(!reg||d.region===reg)&&(!q||d.province.toLowerCase().includes(q)||d.region.toLowerCase().includes(q))); arr.sort((a,b)=>{let av=a[tableSort.key], bv=b[tableSort.key]; if(typeof av==='string') return av.localeCompare(bv,'th')*tableSort.dir; return (av-bv)*tableSort.dir;}); return arr;}
+function getFilteredForTable(){const q=document.getElementById('search').value.trim().toLowerCase(); const reg=document.getElementById('tableRegion').value; let arr=provinces.filter(d=>passGlobalFilters(d)&&(!reg||d.region===reg)&&(!q||d.province.toLowerCase().includes(q)||d.region.toLowerCase().includes(q))); arr.sort((a,b)=>{let av=a[tableSort.key], bv=b[tableSort.key]; if(typeof av==='string') return av.localeCompare(bv,'th')*tableSort.dir; return (av-bv)*tableSort.dir;}); return arr;}
 function renderTable(){const rows=getFilteredForTable(); document.getElementById('tbody').innerHTML=rows.map(d=>`<tr><td class="num">${d.id}</td><td><b>${d.province}</b></td><td><span class="pill">${d.region}</span></td><td class="num">${fmt(d.parcels)}</td><td class="num">${fmt(d.units)}</td><td class="num"><b>${pct(d.change)}</b></td></tr>`).join(''); document.querySelectorAll('#headrow th').forEach(th=>{const active=th.dataset.key===tableSort.key; th.innerHTML=th.textContent.replace(/[▲▼]/g,'') + (active?` <span class="sortmark">${tableSort.dir===1?'▲':'▼'}</span>`:'');});}
-function chartData(order){let arr=[...provinces]; if(order==='changeAsc') arr.sort((a,b)=>a.change-b.change); else arr.sort((a,b)=>a.province.localeCompare(b.province,'th')); return arr;}
+function chartData(order){let arr=provinces.filter(passGlobalFilters); if(order==='changeAsc') arr.sort((a,b)=>a.change-b.change); else arr.sort((a,b)=>a.province.localeCompare(b.province,'th')); return arr;}
 function renderLine(){const order=document.getElementById('chartOrder').value; const arr=chartData(order); markActive(document.getElementById('chartOrder')); lineChart = Highcharts.chart('lineChart', {chart:{type:'line',backgroundColor:'transparent',zoomType:'x'},title:{text:null},credits:{enabled:false},exporting:{enabled:true},xAxis:{categories:arr.map(d=>d.province),labels:{style:{color:'#17324d'},rotation:-60},title:{text: order==='changeAsc'?'เรียงจากน้อยไปมาก':'เรียงตามพยัญชนะ'}},yAxis:{title:{text:'อัตราการเปลี่ยนแปลง (%)'},labels:{style:{color:'#17324d'},format:'{value}%'}},tooltip:{useHTML:true,pointFormatter:function(){const d=arr[this.index]; return `<b>${d.province}</b><br>จำนวนแปลง: ${fmt(d.parcels)}<br>จำนวนหน่วยที่ดิน: ${fmt(d.units)}<br>อัตราการเปลี่ยนแปลง: <b>${pct(d.change)}</b>`;}},legend:{enabled:false},series:[{name:'อัตราการเปลี่ยนแปลง',data:arr.map(d=>d.change),marker:{radius:3},lineWidth:2}]});}
 function provinceFromFeature(f){const keys=[f.properties && f.properties.name, f.properties && f.properties['name:en'], f.properties && f.properties.NAME_1, f.properties && f.properties.province]; for(const k of keys){if(k && byEn.has(String(k).toLowerCase())) return byEn.get(String(k).toLowerCase());} return null;}
-function makeMapData(){const reg=document.getElementById('mapRegion').value; return provinces.map(d=>({nameEn:d.nameEn, value:(!reg || d.region===reg)?d.change:null, custom:d}));}
+function makeMapData(){const reg=document.getElementById('mapRegion').value; return provinces.map(d=>({nameEn:d.nameEn, value:(passGlobalFilters(d) && (!reg || d.region===reg))?d.change:null, custom:d}));}
 function renderMap(){if(!geojson) return; markActive(document.getElementById('mapRegion')); mapChart = Highcharts.mapChart('map', {chart:{backgroundColor:'transparent'},title:{text:null},credits:{enabled:false},exporting:{enabled:true},mapNavigation:{enabled:true,buttonOptions:{verticalAlign:'bottom'}},colorAxis:{min:minChange,max:maxChange,stops:[[0,'#72e6a4'],[0.5,'#f7c948'],[1,'#ff6f61']],labels:{format:'{value}%'}},legend:{title:{text:'อัตราการเปลี่ยนแปลง (%)'},align:'left',verticalAlign:'bottom',floating:true,backgroundColor:'rgba(255,255,255,.92)',borderColor:'#c6dcf8',borderWidth:1},tooltip:{useHTML:true,formatter:function(){const d=this.point.custom; if(!d || this.point.value===null || this.point.value===undefined) return 'ไม่มีข้อมูล'; return `<div style="padding:6px 4px;color:#0b1f3a;font-weight:700;line-height:1.65"><b>${d.province}</b><br>ภูมิภาค: ${d.region}<br>จำนวนแปลง: ${fmt(d.parcels)}<br>จำนวนหน่วยที่ดิน: ${fmt(d.units)}<br>อัตราการเปลี่ยนแปลงแบบถ่วงน้ำหนัก: <b>${pct(d.change)}</b></div>`;}},series:[{mapData:geojson,data:makeMapData(),joinBy:['name','nameEn'],name:'อัตราการเปลี่ยนแปลง',borderColor:'rgba(255,255,255,.45)',borderWidth:.6,nullColor:'rgba(255,255,255,.08)',states:{hover:{borderColor:'#fff',borderWidth:1.5}},dataLabels:{enabled:false}}]});}
 async function loadMap(){try{geojson=await fetch('https://code.highcharts.com/mapdata/countries/th/th-all.geo.json').then(r=>r.json()); renderMap();}catch(e){document.getElementById('map').innerHTML='<div class="note">ไม่สามารถโหลดแผนที่จากอินเทอร์เน็ตได้ แต่ตารางและกราฟยังใช้งานได้</div>';}}
-document.getElementById('mapRegion').addEventListener('change', renderMap);
-document.getElementById('chartOrder').addEventListener('change', renderLine);
+document.getElementById('mapRegion').addEventListener('change', e=>{markActive(e.target); renderMap();});
+document.getElementById('chartOrder').addEventListener('change', e=>{markActive(e.target); renderLine();});
 ['search','tableRegion'].forEach(id=>document.getElementById(id).addEventListener('input', e=>{markActive(e.target); renderTable();}));
+['globalProvince'].forEach(id=>document.getElementById(id).addEventListener('change', e=>{markActive(e.target); refreshAll();}));
 document.querySelectorAll('#headrow th').forEach(th=>th.addEventListener('click',()=>{const key=th.dataset.key; if(tableSort.key===key) tableSort.dir*=-1; else tableSort={key,dir:1}; renderTable();}));
 renderTable(); renderLine(); loadMap();
 </script>
